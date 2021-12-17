@@ -38,7 +38,7 @@ jobs:
           
       - name: Deploy
         run: |
-          windeployqt --release --no-translations --no-opengl-sw --compiler-runtime src/release/LogLite.exe
+          windeployqt --no-translations --no-opengl-sw --compiler-runtime src/release/LogLite.exe
           
       - name: Upload a Build Artifact
         uses: actions/upload-artifact@v2
