@@ -38,13 +38,11 @@ jobs:
           
       - name: Deploy
         run: |
-          mkdir release-binaries
-          windeployqt --release --no-translations --no-opengl-sw --compiler-runtime --dir release-binaries/ src/release/LogLite.exe
-          cp src/release/LogLite.exe release-binaries/
+          windeployqt --release --no-translations --no-opengl-sw --compiler-runtime src/release/LogLite.exe
           
       - name: Upload a Build Artifact
         uses: actions/upload-artifact@v2
         with:
           name: EVELogLite
-          path: release-binaries/
+          path: src/release/
           
