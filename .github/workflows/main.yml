@@ -39,10 +39,13 @@ jobs:
       - name: Deploy
         run: |
           mkdir release-binaries
-          windeployqt --no-translations --no-opengl-sw --compiler-runtime --dir release-binaries/ --verbose 2 src/release/LogLite.exe
+          windeployqt --no-translations --no-opengl-sw --compiler-runtime --dir release-binaries/ src/release/LogLite.exe
           cp src/release/LogLite.exe release-binaries/
+          cp $env:Qt5_Dir/bin/libgcc_s_seh-*.dll release-binaries/
+          cp $env:Qt5_Dir/bin/libstdc++-*.dll release-binaries/
+          cp $env:Qt5_Dir/bin/libwinpthread-*.dll release-binaries/
           
-      - name: Upload a Build Artifact
+      - name: Upload Artifact
         uses: actions/upload-artifact@v2
         with:
           name: EVELogLite
