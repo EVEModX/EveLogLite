@@ -29,9 +29,10 @@ jobs:
         uses: jurplel/install-qt-action@v2
         
       - name: Make
+        shell: cmd
         run: |
-          cd src
           call "%programfiles(x86)%\Microsoft Visual Studio\2019\Enterprise\VC\Auxiliary\Build\vcvars64.bat"
+          cd src
           qmake
           make
-        
+          
