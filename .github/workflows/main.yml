@@ -31,15 +31,20 @@ jobs:
           arch: win64_mingw81
         
       - name: Make
-        shell: cmd
         run: |
           cd src
           qmake
           make
-          windeployqt release/LogLite.exe
+          
+      - name: Deploy
+        run: |
+          mkdir release-binaries
+          cp src/release/LogLite.exe release-binaries/
+          windeployqt --release --no-translations --no-opengl-sw --compiler-runtime release-binaries/LogLite.exe
           
       - name: Upload a Build Artifact
         uses: actions/upload-artifact@v2
         with:
-          path: src/release/
+          name: EVELogLite
+          path: release-binaries/
           
