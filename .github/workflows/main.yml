@@ -30,6 +30,7 @@ jobs:
         
       - name: Make
         run: |
+          cd src
           qmake
           make
         
