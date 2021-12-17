@@ -36,9 +36,10 @@ jobs:
           cd src
           qmake
           make
+          windeployqt release/LogLite.exe
           
       - name: Upload a Build Artifact
         uses: actions/upload-artifact@v2
         with:
-          path: src/release/LogLite.exe
+          path: src/release/
           
